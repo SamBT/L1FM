@@ -33,6 +33,7 @@ Each file is in HDF5 format and the relevant entry is `Particles`, which stores 
 2. **Entries 1-4**: 4 electrons
 3. **Entries 5-8**: 4 muons
 4. **Entries 9-18**: 10 jets
+
 Not every event has 4 electrons, 4 muons, and 10 jets, so any "extra" entries are just filled with zeros (e.g. if there are only 3 electrons in event 0, then `Particles[0,4,:] = [0,0,0,0]`).
 
 ## Training setup
