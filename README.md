@@ -28,7 +28,7 @@ leptoquark_LOWMASS_lepFilter_13TeV_filtered.h5
 ```
 All of these files contain data from simulated collision events from various signal/background processes. Everything not labeled "background" is a BSM signal, and was used as a target for anomaly detection. The background samples are composed of a mixture of Standard Model physics processes (e.g. QCD, top quark, W, Z, etc.). 
 
-Each file is in HDF5 format and the relevant entry is `Particles`, which stores an array of shape `(N,19,4)`. `N` is the number of events, 19 is the number of particles saved per event, and 4 is the number of input features for each particle. The input features are ($p_T$,$\eta$,$\phi$,$c$), where $c$ encodes the particle type (1 = missing energy, 2 = electron, 3 = muon, 4 = jet). The 19 elements are organized as follows (indexing from 0):
+Each file is in HDF5 format and the relevant entry is `Particles`, which stores an array of shape `(N,19,4)`. `N` is the number of events, 19 is the number of particles saved per event, and 4 is the number of input features for each particle. The input features are ($p_T$, $\eta$, $\phi$, $c$), where $c$ encodes the particle type (1 = missing energy, 2 = electron, 3 = muon, 4 = jet). The 19 elements are organized as follows (indexing from 0):
 1. **Entry 0**:  missing transverse momentum $p_T^\text{miss}. This is not technically a "particle" but it has a $p_T$ and $\phi$ entry (by definition there is no $\eta$, so this is just always set to 0)
 2. **Entries 1-4**: 4 electrons
 3. **Entries 5-8**: 4 muons
