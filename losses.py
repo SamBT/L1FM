@@ -25,15 +25,14 @@ class SupervisedSimCLRLoss(nn.Module):
         Returns:
             A loss scalar.
         """
-        device = (torch.device('cuda')
-                  if features.is_cuda
-                  else torch.device('cpu'))
 
         if len(features.shape) < 3:
             raise ValueError('`features` needs to be [bsz, n_views, ...],'
                              'at least 3 dimensions are required')
         if len(features.shape) > 3:
             features = features.view(features.shape[0], features.shape[1], -1)
+
+        device = features.device
 
         batch_size = features.shape[0]
         if labels is not None and mask is not None:
@@ -75,7 +74,7 @@ class SupervisedSimCLRLoss(nn.Module):
             1,
             torch.arange(batch_size * anchor_count).view(-1, 1).to(device),
             0
-        )
+        ).to(device)
         mask = mask * logits_mask
 
         # compute log_prob
